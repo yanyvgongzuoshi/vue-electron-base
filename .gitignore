@@ -28,3 +28,8 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# electron 打包目录
+out
+# electron 编译 和 vue 打包文件存放目录
+electrontarget
