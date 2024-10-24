@@ -14,7 +14,7 @@ const createWindow = () => {
   })
 
   // 根据是否存在开发路径，决定加载不同的内容
-  let devUrl = process.argv[2]
+  const devUrl = process.argv[2]
   if(devUrl){
     win.loadURL(devUrl)
   }else{
