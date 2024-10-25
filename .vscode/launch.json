@@ -5,6 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "npm run build:all",
+      "name": "一键打包",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
       "command": "npm run dev:all",
       "name": "一键运行",
       "request": "launch",

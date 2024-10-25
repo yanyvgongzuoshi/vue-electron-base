@@ -2,9 +2,12 @@
   "name": "vue-electron-base",
   "version": "0.0.0",
   "private": true,
+  "author": "烟雨平生",
+  "description": "可复用的vue+electron整合底座，提供一键启动和打包能力",
+  "main": "electrontarget/electronMain.js",
   "scripts": {
     "dev:all": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build:all": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",

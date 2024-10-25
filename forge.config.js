@@ -7,22 +7,17 @@ module.exports = {
   },
   rebuildConfig: {},
   makers: [
+    // windows 上的打包
     {
       name: '@electron-forge/maker-squirrel',
       config: {},
     },
+    // 打成 zip 的包，windows 上和 mac 上都有
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: ['darwin', 'win32'],
     },
-    {
-      name: '@electron-forge/maker-deb',
-      config: {},
-    },
-    {
-      name: '@electron-forge/maker-rpm',
-      config: {},
-    },
+
   ],
   plugins: [
     {
