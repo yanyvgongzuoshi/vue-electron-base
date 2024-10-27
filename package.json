@@ -91,6 +91,7 @@
       "installerIcon": "src/assets/icon.ico",
       "uninstallerIcon": "src/assets/icon.ico",
       "installerHeaderIcon": "src/assets/icon.ico"
-    }
+    },
+    "afterPack": "./removeLocales.js"
   }
 }
