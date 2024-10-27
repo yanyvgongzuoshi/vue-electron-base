@@ -1,17 +1,33 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+// 通过 context 访问全局方法
+const context = getCurrentInstance()?.appContext.config.globalProperties
+
+onMounted(function () {
+  // 成功样例
+  context?.$sendRequest('example', {
+    body: {
+      name: "jane-doe"
+    },
+  }).then((res: any) => {
+    console.log(res)
+  })
+  // 404样例
+  context?.$sendRequest('example1', {
+    body: {
+      name: "jane-doe"
+    },
+  }).then((res: any) => {
+    console.log(res)
+  })
+})
 </script>
 
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />

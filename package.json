@@ -5,6 +5,9 @@
   "author": "烟雨平生",
   "description": "可复用的vue+electron整合底座，提供一键启动和打包能力",
   "main": "electrontarget/electronMain.js",
+  "imports": {
+    "#root/*": "./electron/*"
+  },
   "scripts": {
     "dev:all": "vite",
     "build:all": "run-p type-check \"build-only {@}\" --",
@@ -23,8 +26,15 @@
     "dist": "electron-builder"
   },
   "dependencies": {
+    "bindings": "^1.5.0",
     "electron-squirrel-startup": "^1.0.1",
+    "element-plus": "^2.8.6",
+    "express": "^4.21.1",
     "pinia": "^2.2.4",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "unplugin-icons": "^0.19.3",
+    "unplugin-vue-components": "^0.27.4",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },
@@ -38,6 +48,8 @@
     "@electron-forge/plugin-fuses": "^7.5.0",
     "@electron/fuses": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^5.0.0",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.16.11",
     "@vitejs/plugin-vue": "^5.1.4",
@@ -58,6 +70,7 @@
     "prettier": "^3.3.3",
     "start-server-and-test": "^2.0.8",
     "typescript": "~5.5.4",
+    "unplugin-auto-import": "^0.18.3",
     "vite": "^5.4.8",
     "vite-plugin-vue-devtools": "^7.4.6",
     "vitest": "^2.1.2",
@@ -74,19 +87,21 @@
       "output": "out"
     },
     "win": {
-      "target": ["nsis"],
+      "target": [
+        "nsis"
+      ],
       "icon": "src/assets/icon.ico"
     },
     "nsis": {
-      "oneClick": false,   
-      "allowElevation": true,   
-      "allowToChangeInstallationDirectory": true, 
-      "createDesktopShortcut": true,   
-      "createStartMenuShortcut": true,   
-      "shortcutName": "VEB", 
-      "uninstallDisplayName": "VEB", 
-      "runAfterFinish": true, 
-      "perMachine": true, 
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "VEB",
+      "uninstallDisplayName": "VEB",
+      "runAfterFinish": true,
+      "perMachine": true,
       "artifactName": "${productName}-${version}-Setup.exe",
       "installerIcon": "src/assets/icon.ico",
       "uninstallerIcon": "src/assets/icon.ico",
