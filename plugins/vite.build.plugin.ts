@@ -4,7 +4,7 @@
 import { Plugin } from "vite";
 
 // 通过 spawn 的方式执行 electron-forge 的打包命令
-import { ChildProcess, spawn, exec } from "node:child_process";
+import { ChildProcess, spawn } from "node:child_process";
 
 import os from 'os'
 
@@ -70,17 +70,8 @@ export const ElectronBuildPlugin = ():Plugin =>{
             if (platform === 'win32') {
                 console.log('当前运行环境是 Windows');
                 // windows 上需要执行这种方式
-                exec('npm run make', (error, stdout, stderr) => {
-                    if (error) {
-                        console.error(`执行错误: ${error}`);
-                        return;
-                    }
-                    if (stderr) {
-                        console.error(`标准错误输出: ${stderr}`);
-                    }
-                    console.log(`标准输出: ${stdout}`);
-                });
-
+                const buildChildProcess = spawn('npm.cmd', ['run', 'dist'], { shell: true, stdio: 'inherit'});
+                
             } else if (platform === 'darwin') {
                 console.log('当前运行环境是 Mac');
                 // Mac上可以执行这种方式

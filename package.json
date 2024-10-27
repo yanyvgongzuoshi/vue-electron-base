@@ -18,7 +18,9 @@
     "format": "prettier --write src/",
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
@@ -47,6 +49,7 @@
     "@vue/tsconfig": "^0.5.1",
     "cypress": "^13.15.0",
     "electron": "^33.0.2",
+    "electron-builder": "^25.1.8",
     "eslint": "^9.12.0",
     "eslint-plugin-cypress": "^4.0.0",
     "eslint-plugin-vue": "^9.29.0",
@@ -59,5 +62,35 @@
     "vite-plugin-vue-devtools": "^7.4.6",
     "vitest": "^2.1.2",
     "vue-tsc": "^2.1.6"
+  },
+  "build": {
+    "appId": "cn.yanyvpingsheng.VEB",
+    "productName": "vue-electron-base",
+    "files": [
+      "electrontarget/**/*"
+    ],
+    "directories": {
+      "buildResources": "./",
+      "output": "out"
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "src/assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,   
+      "allowElevation": true,   
+      "allowToChangeInstallationDirectory": true, 
+      "createDesktopShortcut": true,   
+      "createStartMenuShortcut": true,   
+      "shortcutName": "VEB", 
+      "uninstallDisplayName": "VEB", 
+      "runAfterFinish": true, 
+      "perMachine": true, 
+      "artifactName": "${productName}-${version}-Setup.exe",
+      "installerIcon": "src/assets/icon.ico",
+      "uninstallerIcon": "src/assets/icon.ico",
+      "installerHeaderIcon": "src/assets/icon.ico"
+    }
   }
 }
